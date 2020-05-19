@@ -13,7 +13,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    port: 4400,
+    port: 4500,
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -24,6 +24,10 @@ module.exports = {
       {
         from: path.resolve(__dirname, 'src/assets'),
         to: path.resolve(__dirname, 'dist/assets'),
+      },
+      {
+        from: path.resolve(__dirname, 'node_modules/reveal.js/plugin'),
+        to: path.resolve(__dirname, 'dist/plugin'),
       },
     ]),
     new MiniCssExtractPlugin({
@@ -66,6 +70,13 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env'],
           },
+        },
+      },
+      {
+        test: require.resolve('reveal.js'),
+        use: {
+          loader: 'expose-loader',
+          options: 'Reveal',
         },
       },
     ],
