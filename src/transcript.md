@@ -9,7 +9,7 @@ Hey! I'm Evgeniy. I want to narrate about the lodash. This is a modern JavaScrip
 The original author of the library is John-David Dalton. The initial release took place in 2012. 
 Lodash draws most of its ideas from Underscore.js and now receives maintenance from the original contributors to Underscore.js.
 
-## Slide №3 (Why Lodash?)
+## Slide №2 (Why Lodash?)
 
 Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
 Lodash’s modular methods are great for:
@@ -18,7 +18,7 @@ Lodash’s modular methods are great for:
 * Manipulating & testing values;
 * Creating composite functions;
 
-## Slide №4 (Lodash and the ES6 standard)
+## Slide №3 (Lodash and the ES6 standard)
 
 Lodash was especially relevant before the release of the ES6 standard.
 For example, some Lodash -> es5/es6 array methods:
@@ -31,11 +31,11 @@ For example, some Lodash -> es5/es6 array methods:
 * contains -> includes
 * etc
 
-## Slide №5 (Is it relevant today?)
+## Slide №4 (Is it relevant today?)
 
 You ask: why should we use Lodash? After all, there are almost all native JavaScript methods that we can use without Lodash. There are differences, and you will see this when I talk about the possibilities of this library.
 
-## Slide №6 (Possibilities)
+## Slide №5 (Possibilities)
 
 So, we pass directly to Lodash itself. It can be broken down into several main areas:
 
@@ -47,6 +47,142 @@ So, we pass directly to Lodash itself. It can be broken down into several main a
 * Object - accessing, extending, merging, defaults, and transforming;
 * Seq - chaining, wrapping, filtering, and testing.
 
-## Slide 7 (Utilities)
+Let's consider some of them.
+
+## Slide №6 ("Collection" Methods)
+
+Before that I already said that Lodash and the ES6 methods are very similar. Let's consider in more detail.
+
+## Slide №7.1 (_.forEach (ES6))
+
+For an example of the similarities and differences of native JS and Lodash methods we consider _.each method.
+
+forEach method of native JS iterates over elements of an array and invokes iterate for each element.
+
+```
+const arr = [1, 2, 3];
+
+arr.forEach((item) => console.log(item));
+// expected: 1, 2, 3
+```
+
+We can iterate over the elements of the array, but not keys of an object, which is obvious:
+
+```
+const obj = {
+  name: 'Jack',
+  age: 26,
+};
+
+obj.forEach((item) => console.log(item));
+// expected: TypeError: obj.forEach is not a function
+```
+
+As a result, we expect TypeError.
+
+## Slide №7.2 (_.each (Lodash))
+
+_.each method of Lodash allows iterate values of objects:
+```
+const obj = {
+  name: 'Jack',
+  age: 26,
+};
+
+_.each(obj, (item) => console.log(item));
+// expected: 'Jack', 26
+```
+We also can iterate keys:
+```
+// _.each(obj, (item, key) => console.log(`${key}: ${item}`));
+/* expected:  name: 'Jack'
+              age: 26 */
+```
+This method returns collection.
+
+## Slide №8 (_.groupBy)
+
+GroupBy method creates an object composed of keys generated from the results of running each element of collection through iterate. For example, we have an array of person. 
+```
+const persons = [{ name: 'Jack', isActive: false }, 
+                { name: 'Julia', isActive: true }, 
+                { name: 'John', isActive: true }
+                ];
+```
+This method allows you to group items by an iterator.
+```
+const groups = _.groupBy(persons, (person) => person.isActive);
+
+/* expected: {
+  false: [ { name: 'Jack', isActive: false } ],
+  true: [
+    { name: 'Julia', isActive: true },
+    { name: 'John', isActive: true }
+  ]
+} */
+```
+In our example, we grouped into active and inactive persons.
+
+## Slide №9 ("Function" Methods)
+
+Further we will consider two useful function methods that may be useful.
+
+## Slide №10 (_.debounce)
+
+Debounce method creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked. Example:
+```
+const isValidEmail = (email) => (/* some RegExp */).test(email);
+
+input.addEventListener('input', _.debounce(() => isValidEmail(input.value), 2000));
+```
+We can check the validity of the email during the input process so that we can report an error as early as possible. In this example, we check the email after 2 seconds of stopping text input.
+
+## Slide №11 (_.memoize)
+
+Memoize method creates a function that memoizes the result of func. 
+```
+const add = (a, b) => a + b; // or some difficult function
+	
+const adder = _.memoize(add);
+
+adder(20, 5); // 25
+adder(10, 10); // 20
+adder(20, 5); // returns cached result (25)
+adder(10, 10); // returns cached result (20)
+adder(20, 5); // returns cached result (25)
+```
+For example you don't want to have to perform that same operation over and over for the same arguments. Memoize effectively lets you cache the results of a function.
+
+## Slide №12 (Utilities)
+
+Finally, I would like to consider a few "utilities" methods.
+
+## Slide №13 (_.random)
+
+Produces a random number between the inclusive lower and upper bounds. If only one argument is provided a number between 0 and the given number is returned. If floating is true, or either lower or upper are floats, a floating-point number is returned instead of an integer.
+
+```
+_.random(0, 5);
+// an integer between 0 and 5
+ 
+_.random(5);
+// also an integer between 0 and 5
+ 
+_.random(5, true);
+// a floating-point number between 0 and 5
+ 
+_.random(1.2, 5.2);
+// a floating-point number between 1.2 and 5.2
+```
+
+## Slide №14 (_.times)
+
+A quite useful method. Invokes the iteratee n times, returning an array of the results of each invocation. 
+```
+_.times(5, () => _.random(0, 5)); // array with random values between 0 and 5
+```
+For example, we can create an array with random values.
+
+## Slide №15 (_.mixin)
 
 
