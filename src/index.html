@@ -1,20 +1,172 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lodash presentation</title>
-    <link rel="icon" href="assets/favicon.ico" type="image/ico" />
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-          <h1>Lodash</h1>
-          <p>modularity, performance & extras</p>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Lodash presentation</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/ico" />
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>_.Lodash</h1>
+        <p>modularity, performance & extras</p>
+      </section>
+
+      <section>
+        <h2>Installation</h2>
+
+        <p>In a browser</p>
+        <pre>
+          <code data-trim><script src="lodash.js"></script></code>
+        </pre>
+
+        <p>Using npm</p>
+        <pre>
+          <code data-trim data-noescape="">$ npm install lodash</code>
+        </pre>
+
+        <p>Require</p>
+        <pre>
+          <code data-trim data-noescape="">var _ = require('lodash');</code>
+        </pre>
+      </section>
+
+      <section>
+        <h2>Why Lodash?</h2>
+
+        <ul>
+          <li class="fragment">Iterating arrays, objects, & strings</li>
+          <li class="fragment">Manipulating & testing values</li>
+          <li class="fragment">Creating composite functions</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lodash & ES6</h2>
+
+        <h3>Lodash -> es5/es6 array methods</h3>
+        <ul>
+          <li>each -> forEach</li>
+          <li>map -> map</li>
+          <li>reduce -> reduce</li>
+          <li>find -> find</li>
+          <li>filter -> filter</li>
+          <li>contains -> includes</li>
+          <li>etc</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lodash today</h2>
+        <img src="assets/relevant-meme.jpg" alt="relevant-meme">
+      </section>
+
+      <section>
+        <h2>Possibilities</h2>
+
+        <ul>
+          <li class="fragment">Utilities</li>
+          <li class="fragment">functions</li>
+          <li class="fragment">String</li>
+          <li class="fragment">Array</li>
+          <li class="fragment">Collection</li>
+          <li class="fragment">Object</li>
+          <li class="fragment">Seq</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>"Collection" Methods</h2>
+      </section>
+
+      <section>
+        <section>
+          <h2>_.forEach</h2>
+
+          <h3>ES6</h3>
+          <pre>
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+              const arr = [1, 2, 3];
+
+              arr.forEach((item) => console.log(item));
+              // expected: 1, 2, 3
+          </code>
+        </pre>
+
+          <pre class="fragment">
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+              const obj = {
+                name: 'Jack',
+                age: 26,
+              };
+
+              obj.forEach((item) => console.log(item));
+              // expected: TypeError: obj.forEach is not a function
+          </code>
+        </pre>
         </section>
-				<section>Slide 2</section>
-			</div>
-		</div>
-	</body>
+
+        <section>
+          <h2>_.forEach</h2>
+
+          <h3>Lodash</h3>
+          <pre>
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            const obj = {
+              name: 'Jack',
+              age: 26,
+            };
+
+            _.forEach(obj, (item) => console.log(item));
+            // expected: 'Jack', 26
+          </code>
+        </pre>
+        <pre class="fragment">
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            _.forEach(obj, (item, key) => console.log(`${key}: ${item}`));
+            /* expected:  name: 'Jack'
+                          age: 26 */
+          </code>
+        </pre>
+        </section>
+      </section>
+
+      <section>
+        <h2>_.groupBy</h2>
+
+        <pre>
+        <code class="hljs javascript has-highlights" data-trim data-noescape>
+          const persons = [
+            { name: 'Jack', isActive: false },
+            { name: 'Julia', isActive: true },
+            { name: 'John', isActive: true }
+          ];
+
+          const groups = _.groupBy(persons, (person) => person.isActive);
+        </code>
+      </pre>
+      <pre class="fragment">
+        <code class="hljs javascript has-highlights" data-trim data-noescape>
+          // groups:
+          {
+            false: [ { name: 'Jack', isActive: false } ],
+            true: [
+              { name: 'Julia', isActive: true },
+              { name: 'John', isActive: true }
+            ]
+          }
+        </code>
+      </pre>
+      </section>
+
+      <section>
+        <h2>"Function" Methods</h2>
+      </section>
+    </div>
+  </div>
+</body>
 </html>

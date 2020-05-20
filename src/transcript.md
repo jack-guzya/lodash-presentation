@@ -2,12 +2,12 @@
 
 ## Introduction
 
-Hey! I'm Evgeniy. I want to narrate about the lodash. This is a modern JavaScript utility library delivering modularity, performance & extras.
+Hey! I'm Evgeniy. I want to tell about the lodash. This is a modern JavaScript utility library delivering modularity, performance & extras.
 
 ## Slide 1 (History)
 
 The original author of the library is John-David Dalton. The initial release took place in 2012. 
-Lodash draws most of its ideas from Underscore.js and now receives maintenance from the original contributors to Underscore.js.
+Lodash takes most of its ideas from Underscore.js and now receives maintenance from the original contributors to Underscore.js.
 
 ## Slide 2 (Installation)
 
@@ -97,21 +97,21 @@ obj.forEach((item) => console.log(item));
 
 As a result, we expect TypeError.
 
-## Slide 8.2 (_.each (Lodash))
+## Slide 8.2 (_.forEach (Lodash))
 
-_.each method of Lodash allows iterate values of objects:
+_.forEach method of Lodash allows iterate values of objects:
 ```
 const obj = {
   name: 'Jack',
   age: 26,
 };
 
-_.each(obj, (item) => console.log(item));
+_.forEach(obj, (item) => console.log(item));
 // expected: 'Jack', 26
 ```
 We also can iterate keys:
 ```
-// _.each(obj, (item, key) => console.log(`${key}: ${item}`));
+_.forEach(obj, (item, key) => console.log(`${key}: ${item}`));
 /* expected:  name: 'Jack'
               age: 26 */
 ```
@@ -121,22 +121,24 @@ This method returns collection.
 
 GroupBy method creates an object composed of keys generated from the results of running each element of collection through iterate. For example, we have an array of person. 
 ```
-const persons = [{ name: 'Jack', isActive: false }, 
-                { name: 'Julia', isActive: true }, 
-                { name: 'John', isActive: true }
-                ];
+const persons = [
+        { name: 'Jack', isActive: false }, 
+        { name: 'Julia', isActive: true }, 
+        { name: 'John', isActive: true }
+      ];
 ```
 This method allows you to group items by an iterator.
 ```
 const groups = _.groupBy(persons, (person) => person.isActive);
 
-/* expected: {
+// expected:
+{
   false: [ { name: 'Jack', isActive: false } ],
   true: [
     { name: 'Julia', isActive: true },
     { name: 'John', isActive: true }
   ]
-} */
+}
 ```
 In our example, we grouped into active and inactive persons.
 
