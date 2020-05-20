@@ -4,12 +4,29 @@
 
 Hey! I'm Evgeniy. I want to narrate about the lodash. This is a modern JavaScript utility library delivering modularity, performance & extras.
 
-## Slide №1 (History)
+## Slide 1 (History)
 
 The original author of the library is John-David Dalton. The initial release took place in 2012. 
 Lodash draws most of its ideas from Underscore.js and now receives maintenance from the original contributors to Underscore.js.
 
-## Slide №2 (Why Lodash?)
+## Slide 2 (Installation)
+
+Lodash is easy to install. You can install in the browser or using npm:
+
+In a browser:
+```
+<script src="lodash.js"></script>
+```
+Using npm:
+```
+$ npm i --save lodash
+```
+```
+// Load the full build.
+var _ = require('lodash');
+```
+
+## Slide 3 (Why Lodash?)
 
 Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
 Lodash’s modular methods are great for:
@@ -18,7 +35,7 @@ Lodash’s modular methods are great for:
 * Manipulating & testing values;
 * Creating composite functions;
 
-## Slide №3 (Lodash and the ES6 standard)
+## Slide 4 (Lodash and the ES6 standard)
 
 Lodash was especially relevant before the release of the ES6 standard.
 For example, some Lodash -> es5/es6 array methods:
@@ -31,11 +48,11 @@ For example, some Lodash -> es5/es6 array methods:
 * contains -> includes
 * etc
 
-## Slide №4 (Is it relevant today?)
+## Slide 5 (Is it relevant today?)
 
-You ask: why should we use Lodash? After all, there are almost all native JavaScript methods that we can use without Lodash. There are differences, and you will see this when I talk about the possibilities of this library.
+You ask: why should we use Lodash? After all, there are almost all native JavaScript methods that we can use without Lodash. You will get an answer when I talk about the possibilities of this library.
 
-## Slide №5 (Possibilities)
+## Slide 6 (Possibilities)
 
 So, we pass directly to Lodash itself. It can be broken down into several main areas:
 
@@ -49,11 +66,11 @@ So, we pass directly to Lodash itself. It can be broken down into several main a
 
 Let's consider some of them.
 
-## Slide №6 ("Collection" Methods)
+## Slide 7 ("Collection" Methods)
 
 Before that I already said that Lodash and the ES6 methods are very similar. Let's consider in more detail.
 
-## Slide №7.1 (_.forEach (ES6))
+## Slide 8.1 (_.forEach (ES6))
 
 For an example of the similarities and differences of native JS and Lodash methods we consider _.each method.
 
@@ -80,7 +97,7 @@ obj.forEach((item) => console.log(item));
 
 As a result, we expect TypeError.
 
-## Slide №7.2 (_.each (Lodash))
+## Slide 8.2 (_.each (Lodash))
 
 _.each method of Lodash allows iterate values of objects:
 ```
@@ -100,7 +117,7 @@ We also can iterate keys:
 ```
 This method returns collection.
 
-## Slide №8 (_.groupBy)
+## Slide 9 (_.groupBy)
 
 GroupBy method creates an object composed of keys generated from the results of running each element of collection through iterate. For example, we have an array of person. 
 ```
@@ -123,11 +140,11 @@ const groups = _.groupBy(persons, (person) => person.isActive);
 ```
 In our example, we grouped into active and inactive persons.
 
-## Slide №9 ("Function" Methods)
+## Slide 10 ("Function" Methods)
 
 Further we will consider two useful function methods that may be useful.
 
-## Slide №10 (_.debounce)
+## Slide 11 (_.debounce)
 
 Debounce method creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked. Example:
 ```
@@ -137,7 +154,7 @@ input.addEventListener('input', _.debounce(() => isValidEmail(input.value), 2000
 ```
 We can check the validity of the email during the input process so that we can report an error as early as possible. In this example, we check the email after 2 seconds of stopping text input.
 
-## Slide №11 (_.memoize)
+## Slide 12 (_.memoize)
 
 Memoize method creates a function that memoizes the result of func. 
 ```
@@ -153,11 +170,11 @@ adder(20, 5); // returns cached result (25)
 ```
 For example you don't want to have to perform that same operation over and over for the same arguments. Memoize effectively lets you cache the results of a function.
 
-## Slide №12 (Utilities)
+## Slide 13 (Other methods)
 
-Finally, I would like to consider a few "utilities" methods.
+Finally, I will show you other methods from different areas
 
-## Slide №13 (_.random)
+## Slide 14 (_.random)
 
 Produces a random number between the inclusive lower and upper bounds. If only one argument is provided a number between 0 and the given number is returned. If floating is true, or either lower or upper are floats, a floating-point number is returned instead of an integer.
 
@@ -175,7 +192,7 @@ _.random(1.2, 5.2);
 // a floating-point number between 1.2 and 5.2
 ```
 
-## Slide №14 (_.times)
+## Slide 15 (_.times)
 
 A quite useful method. Invokes the iteratee n times, returning an array of the results of each invocation. 
 ```
@@ -183,6 +200,28 @@ _.times(5, () => _.random(0, 5)); // array with random values between 0 and 5
 ```
 For example, we can create an array with random values.
 
-## Slide №15 (_.mixin)
+## Slide 16 (_.unionBy)
 
+Creates an array of unique values, in order, from all given arrays.
+```
+_.unionBy([2.1], [1.2, 2.3], Math.floor);
+// => [2.1, 1.2]
+ 
+// The `_.property` iteratee shorthand.
+_.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+// => [{ 'x': 1 }, { 'x': 2 }]
+```
+It accepts iterate which is invoked for each element of each array to generate the criterion by which uniqueness is computed. 
 
+## Slide 17 (Modules)
+
+The Lodash library has many different methods for solving various problems. The Lodash library has many different methods for solving various problems. You probably won't use all the methods. You can import only the methods you need so as not to overload the project.
+
+```
+import times from 'lodash/times';
+import random from 'lodash/random';
+```
+
+## Slide 18 (Conclusion)
+
+For complete information, you can go to the official website with documentation: https://lodash.com
