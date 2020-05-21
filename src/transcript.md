@@ -28,8 +28,7 @@ var _ = require('lodash');
 
 ## Slide 3 (Why Lodash?)
 
-Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc.
-Lodash’s modular methods are great for:
+Lodash makes JavaScript easier. Lodash’s modular methods are great for:
 
 * Iterating arrays, objects, & strings;
 * Manipulating & testing values;
@@ -144,11 +143,11 @@ In our example, we grouped into active and inactive persons.
 
 ## Slide 10 ("Function" Methods)
 
-Further we will consider two useful function methods that may be useful.
+Next, we look at two useful functional methods that may be useful.
 
 ## Slide 11 (_.debounce)
 
-Debounce method creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked. Example:
+Debounce method creates a debounced function that delays invoking function until after wait milliseconds have elapsed since the last time the debounced function was invoked. Example:
 ```
 const isValidEmail = (email) => (/* some RegExp */).test(email);
 
@@ -217,7 +216,7 @@ It accepts iterate which is invoked for each element of each array to generate t
 
 ## Slide 17 (Modules)
 
-The Lodash library has many different methods for solving various problems. The Lodash library has many different methods for solving various problems. You probably won't use all the methods. You can import only the methods you need so as not to overload the project.
+The Lodash library has many different methods for solving various problems. You probably won't use all the methods. You can import only the methods you need so as not to overload the project.
 
 ```
 import times from 'lodash/times';

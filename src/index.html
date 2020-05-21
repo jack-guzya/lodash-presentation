@@ -12,7 +12,7 @@
   <div class="reveal">
     <div class="slides">
       <section data-background-color="#000000">
-        <h1 class="title"><span class="underscore">_</span>.Lodash</h1>
+        <h1 class="title"><span class="highlighting">_</span>.Lodash</h1>
         <p class="title">modularity, performance & extras</p>
       </section>
 
@@ -46,16 +46,14 @@
       </section>
 
       <section>
-        <h2>Lodash & ES6</h2>
-
-        <h3>Lodash -> es5/es6 array methods</h3>
+        <h2><span class="highlighting ">Lodash</span> &rarr; <span class="highlighting ">es5/es6</span> array methods</h2>
         <ul>
-          <li>each -> forEach</li>
-          <li>map -> map</li>
-          <li>reduce -> reduce</li>
-          <li>find -> find</li>
-          <li>filter -> filter</li>
-          <li>contains -> includes</li>
+          <li>each &rarr; forEach</li>
+          <li>map &rarr; map</li>
+          <li>reduce &rarr; reduce</li>
+          <li>find &rarr; find</li>
+          <li>filter &rarr; filter</li>
+          <li>contains &rarr; includes</li>
           <li>etc</li>
         </ul>
       </section>
@@ -81,13 +79,13 @@
 
       <section>
         <section>
-          <h2>"Collection" Methods</h2>
+          <h2><span class="highlighting">"Collection"</span> Methods</h2>
         </section>
 
         <section>
-          <h3><span class="underscore">_</span>.forEach</h3>
+          <h3><span class="highlighting">_</span>.forEach</h3>
 
-          <h4>ES6</h4>
+          <h4><span class="highlighting">ES6</span></h4>
           <pre>
           <code class="hljs javascript has-highlights" data-trim data-noescape>
               const arr = [1, 2, 3];
@@ -111,9 +109,9 @@
         </section>
 
         <section>
-          <h3><span class="underscore">_</span>.forEach</h3>
+          <h3><span class="highlighting">_</span>.forEach</h3>
 
-          <h4>Lodash</h4>
+          <h4><span class="highlighting">Lodash</span></h4>
           <pre>
           <code class="hljs javascript has-highlights" data-trim data-noescape>
             const obj = {
@@ -135,7 +133,7 @@
         </section>
 
         <section>
-          <h3><span class="underscore">_</span>.groupBy</h3>
+          <h3><span class="highlighting">_</span>.groupBy</h3>
 
           <pre>
           <code class="hljs javascript has-highlights" data-trim data-noescape>
@@ -165,11 +163,17 @@
 
       <section>
         <section>
-          <h2>"Function" Methods</h2>
+          <h2><span class="highlighting">"functions"</span> Methods</h2>
         </section>
 
         <section>
-          <h3><span class="underscore">_</span>.debounce</h3>
+          <h3><span class="highlighting">_</span>.debounce</h3>
+          <pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.debounce(func, [wait=0])
+            </code>
+          </pre>
+          <pre><code class="hljs javascript has-highlights">[wait=0]: // The number of milliseconds to delay</code></pre>
           <pre>
             <code class="hljs javascript has-highlights" data-trim data-noescape>
               const isValidEmail = (email) => (/* some RegExp */).test(email);
@@ -181,7 +185,7 @@
         </section>
 
         <section>
-          <h3><span class="underscore">_</span>.memoize</h3>
+          <h3><span class="highlighting">_</span>.memoize</h3>
           <pre>
             <code class="hljs javascript has-highlights" data-trim data-noescape>
               const add = (a, b) => a + b; // or some difficult function
@@ -200,11 +204,17 @@
 
       <section>
         <section>
-          <h2>Other methods</h2>
+          <h2><span class="highlighting">Other</span> methods</h2>
         </section>
 
         <section>
-          <h3><span class="underscore">_</span>.random</h3>
+          <h3><span class="highlighting">_</span>.random</h3>
+          <pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.random([lower=0], [upper=1], [floating])
+            </code>
+          </pre>
+          <pre><code class="hljs javascript has-highlights">[floating] (boolean): // Specify returning a floating-point number.</code></pre>
           <pre>
             <code class="hljs javascript has-highlights" data-trim data-noescape>
               _.random(0, 5);
@@ -223,7 +233,13 @@
         </section>
 
         <section>
-          <h3><span class="underscore">_</span>.times</h3>
+          <h3><span class="highlighting">_</span>.times</h3>
+          <pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.times(n, [iteratee=_.identity])
+            </code>
+          </pre>
+          <pre><code class="hljs javascript has-highlights">n (number): // The number of times to invoke iteratee.</code></pre>
           <pre>
             <code class="hljs javascript has-highlights" data-trim data-noescape>
               _.times(5, () => _.random(0, 5));
@@ -234,7 +250,12 @@
         </section>
 
         <section>
-          <h3><span class="underscore">_</span>.unionBy</h3>
+          <h3><span class="highlighting">_</span>.unionBy</h3>
+              <pre>
+                <code class="hljs javascript has-highlights" data-trim data-noescape>
+                  _.unionBy([arrays], [iteratee=_.identity])
+                </code>
+              </pre>
           <pre>
             <code class="hljs javascript has-highlights" data-trim data-noescape>
               _.unionBy([2.1], [1.2, 2.3], Math.floor);
