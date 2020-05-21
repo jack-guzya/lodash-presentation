@@ -1,0 +1,28 @@
+.body {
+  position: relative;
+  background: url("../assets/bg.jpg");
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    opacity: 0.5;
+  }
+}
+
+.title-bg {
+  background-color: #000000;
+}
+
+.title {
+  font-family: "Hitch", sans-serif !important;
+  letter-spacing: 1.2px;
+}
+
+.underscore {
+  color: #2196f5;
+}

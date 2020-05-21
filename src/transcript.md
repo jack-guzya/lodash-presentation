@@ -224,6 +224,6 @@ import times from 'lodash/times';
 import random from 'lodash/random';
 ```
 
-## Slide 18 (Conclusion)
+## Slide 18 (Official documentation)
 
 For complete information, you can go to the official website with documentation: https://lodash.com

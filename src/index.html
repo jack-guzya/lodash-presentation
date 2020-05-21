@@ -8,12 +8,12 @@
   <link rel="icon" href="assets/favicon.ico" type="image/ico" />
 </head>
 
-<body>
+<body class="body">
   <div class="reveal">
     <div class="slides">
-      <section>
-        <h1>_.Lodash</h1>
-        <p>modularity, performance & extras</p>
+      <section data-background-color="#000000">
+        <h1 class="title"><span class="underscore">_</span>.Lodash</h1>
+        <p class="title">modularity, performance & extras</p>
       </section>
 
       <section>
@@ -80,14 +80,14 @@
       </section>
 
       <section>
-        <h2>"Collection" Methods</h2>
-      </section>
-
-      <section>
         <section>
-          <h2>_.forEach</h2>
+          <h2>"Collection" Methods</h2>
+        </section>
 
-          <h3>ES6</h3>
+        <section>
+          <h3><span class="underscore">_</span>.forEach</h3>
+
+          <h4>ES6</h4>
           <pre>
           <code class="hljs javascript has-highlights" data-trim data-noescape>
               const arr = [1, 2, 3];
@@ -111,9 +111,9 @@
         </section>
 
         <section>
-          <h2>_.forEach</h2>
+          <h3><span class="underscore">_</span>.forEach</h3>
 
-          <h3>Lodash</h3>
+          <h4>Lodash</h4>
           <pre>
           <code class="hljs javascript has-highlights" data-trim data-noescape>
             const obj = {
@@ -125,7 +125,7 @@
             // expected: 'Jack', 26
           </code>
         </pre>
-        <pre class="fragment">
+          <pre class="fragment">
           <code class="hljs javascript has-highlights" data-trim data-noescape>
             _.forEach(obj, (item, key) => console.log(`${key}: ${item}`));
             /* expected:  name: 'Jack'
@@ -133,38 +133,136 @@
           </code>
         </pre>
         </section>
-      </section>
 
-      <section>
-        <h2>_.groupBy</h2>
+        <section>
+          <h3><span class="underscore">_</span>.groupBy</h3>
 
-        <pre>
-        <code class="hljs javascript has-highlights" data-trim data-noescape>
-          const persons = [
-            { name: 'Jack', isActive: false },
-            { name: 'Julia', isActive: true },
-            { name: 'John', isActive: true }
-          ];
-
-          const groups = _.groupBy(persons, (person) => person.isActive);
-        </code>
-      </pre>
-      <pre class="fragment">
-        <code class="hljs javascript has-highlights" data-trim data-noescape>
-          // groups:
-          {
-            false: [ { name: 'Jack', isActive: false } ],
-            true: [
+          <pre>
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            const persons = [
+              { name: 'Jack', isActive: false },
               { name: 'Julia', isActive: true },
               { name: 'John', isActive: true }
-            ]
-          }
-        </code>
-      </pre>
+            ];
+
+            const groups = _.groupBy(persons, (person) => person.isActive);
+          </code>
+        </pre>
+          <pre class="fragment">
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            // groups:
+            {
+              false: [ { name: 'Jack', isActive: false } ],
+              true: [
+                { name: 'Julia', isActive: true },
+                { name: 'John', isActive: true }
+              ]
+            }
+          </code>
+        </pre>
+        </section>
       </section>
 
       <section>
-        <h2>"Function" Methods</h2>
+        <section>
+          <h2>"Function" Methods</h2>
+        </section>
+
+        <section>
+          <h3><span class="underscore">_</span>.debounce</h3>
+          <pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              const isValidEmail = (email) => (/* some RegExp */).test(email);
+
+              input.addEventListener('input',
+                  _.debounce(() => isValidEmail(input.value), 2000));
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3><span class="underscore">_</span>.memoize</h3>
+          <pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              const add = (a, b) => a + b; // or some difficult function
+
+              const adder = _.memoize(add);
+
+              adder(20, 5); // 25
+              adder(10, 10); // 20
+              adder(20, 5); // returns cached result (25)
+              adder(10, 10); // returns cached result (20)
+              adder(20, 5); // returns cached result (25)
+            </code>
+          </pre>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Other methods</h2>
+        </section>
+
+        <section>
+          <h3><span class="underscore">_</span>.random</h3>
+          <pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.random(0, 5);
+              // an integer between 0 and 5
+
+              _.random(5);
+              // also an integer between 0 and 5
+
+              _.random(5, true);
+              // a floating-point number between 0 and 5
+
+              _.random(1.2, 5.2);
+              // a floating-point number between 1.2 and 5.2
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3><span class="underscore">_</span>.times</h3>
+          <pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.times(5, () => _.random(0, 5));
+              // expected: [0, 3, 1, 4, 5]
+              // array with random values between 0 and 5
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3><span class="underscore">_</span>.unionBy</h3>
+          <pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.unionBy([2.1], [1.2, 2.3], Math.floor);
+              // => [2.1, 1.2]
+
+              // The `_.property` iteratee shorthand.
+              _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+              // => [{ 'x': 1 }, { 'x': 2 }]
+            </code>
+          </pre>
+        </section>
+      </section>
+
+      <section>
+        <h2>Modules</h2>
+        <pre>
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            import times from 'lodash/times';
+            import random from 'lodash/random';
+
+            times(5, () => random(0, 5));
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h2>Documentation</h2>
+        <a href="https://lodash.com" target="_blank">https://lodash.com</a>
       </section>
     </div>
   </div>
