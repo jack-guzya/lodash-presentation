@@ -14,6 +14,17 @@
       <section data-background-color="#000000">
         <h1 class="title"><span class="highlighting">_</span>.Lodash</h1>
         <p class="title">modularity, performance & extras</p>
+
+        <aside class="notes">
+          <p>Hey! I'm Evgeniy. I want to tell about the lodash. This is a modern JavaScript utility library delivering
+            modularity, performance & extras.</p>
+
+          <p>The original author of the library is John-David Dalton. The initial release took place in 2012.
+            Lodash takes most of its ideas from Underscore.js and now receives maintenance from the original
+            contributors
+            to Underscore.js.</p>
+        </aside>
+
       </section>
 
       <section>
@@ -33,6 +44,10 @@
         <pre>
           <code data-trim data-noescape="">var _ = require('lodash');</code>
         </pre>
+
+        <aside class="notes">
+          <p>Lodash is easy to install. You can install in the browser or using npm</p>
+        </aside>
       </section>
 
       <section>
@@ -43,10 +58,15 @@
           <li class="fragment">Manipulating & testing values</li>
           <li class="fragment">Creating composite functions</li>
         </ul>
+
+        <aside class="notes">
+          <p>Lodash makes JavaScript easier. Lodash’s modular methods are great for:</p>
+        </aside>
       </section>
 
       <section>
-        <h2><span class="highlighting ">Lodash</span> &rarr; <span class="highlighting ">es5/es6</span> array methods</h2>
+        <h2><span class="highlighting ">Lodash</span> &rarr; <span class="highlighting ">es5/es6</span> array methods
+        </h2>
         <ul>
           <li>each &rarr; forEach</li>
           <li>map &rarr; map</li>
@@ -56,11 +76,22 @@
           <li>contains &rarr; includes</li>
           <li>etc</li>
         </ul>
+
+        <aside class="notes">
+          <p>Lodash was especially relevant before the release of the ES6 standard. </p>
+          <p>You can see the similarity of
+            methods on this slide</p>
+        </aside>
       </section>
 
       <section>
         <h2>Lodash today</h2>
         <img src="assets/relevant-meme.jpg" alt="relevant-meme">
+
+        <aside class="notes">
+          <p>You ask: why should we use Lodash? After all, there are almost all native JavaScript methods that we can
+            use without Lodash. You will get an answer when I talk about the possibilities of this library.</p>
+        </aside>
       </section>
 
       <section>
@@ -75,11 +106,35 @@
           <li class="fragment">Object</li>
           <li class="fragment">Seq</li>
         </ul>
+
+        <aside class="notes">
+          <p>So, we pass directly to Lodash itself. It can be broken down into several main areas:</p>
+
+          <ul>
+            <li>Utilities - for simplifying common programming tasks such as determining type as well as simplifying
+              math operations;</li>
+            <li>Function - simplifying binding, decorating, constraining, throttling, currying, and changing the
+              pointer;</li>
+            <li>String - conversion functions for performing basic string operations, such as trimming, converting to
+              uppercase, camel case, etc;</li>
+            <li>Array - creating, splitting, combining, modifying, and compressing;</li>
+            <li>Collection - iterating, sorting, filtering, splitting, and building;</li>
+            <li>Object - accessing, extending, merging, defaults, and transforming;</li>
+            <li>Seq - chaining, wrapping, filtering, and testing.</li>
+          </ul>
+
+          <p>Let's consider some of them.</p>
+        </aside>
       </section>
 
       <section>
         <section>
           <h2><span class="highlighting">"Collection"</span> Methods</h2>
+
+          <aside class="notes">
+            <p>Before that I already said that Lodash and the ES6 methods are very similar. Let's consider in more
+              detail.</p>
+          </aside>
         </section>
 
         <section>
@@ -106,6 +161,15 @@
               // expected: TypeError: obj.forEach is not a function
           </code>
         </pre>
+
+          <aside class="notes">
+            <p>For an example of the similarities and differences of native JS and Lodash methods we consider _.each
+              method.</p>
+            <p>forEach method of native JS iterates over elements of an array and invokes iterate for each element.</p>
+            <p>--next--</p>
+            <p>We can iterate over the elements of the array, but not keys of an object, which is obvious:</p>
+            <p>As a result, we expect TypeError.</p>
+          </aside>
         </section>
 
         <section>
@@ -130,6 +194,13 @@
                           age: 26 */
           </code>
         </pre>
+
+          <aside class="notes">
+            <p>_.forEach method of Lodash allows iterate values of objects:</p>
+            <p>--next--</p>
+            <p>We also can iterate keys:</p>
+            <p>This method returns collection.</p>
+          </aside>
         </section>
 
         <section>
@@ -158,12 +229,24 @@
             }
           </code>
         </pre>
+
+          <aside class="notes">
+            <p>GroupBy method creates an object composed of keys generated from the results of running each element of
+              collection through iterate. For example, we have an array of person. </p>
+            <p>--next---</p>
+            <p>This method allows you to group items by an iterator.</p>
+            <p>In our example, we grouped into active and inactive persons.</p>
+          </aside>
         </section>
       </section>
 
       <section>
         <section>
           <h2><span class="highlighting">"functions"</span> Methods</h2>
+
+          <aside class="notes">
+            <p>Next, we look at two useful functional methods that may be useful.</p>
+          </aside>
         </section>
 
         <section>
@@ -182,6 +265,14 @@
                   _.debounce(() => isValidEmail(input.value), 2000));
             </code>
           </pre>
+
+          <aside class="notes">
+            <p>Debounce method creates a debounced function that delays invoking function until after wait milliseconds
+              have elapsed since the last time the debounced function was invoked. </p>
+
+            <p>We can check the validity of the email during the input process so that we can report an error as early
+              as possible. In this example, we check the email after 2 seconds of stopping text input.</p>
+          </aside>
         </section>
 
         <section>
@@ -199,12 +290,23 @@
               adder(20, 5); // returns cached result (25)
             </code>
           </pre>
+
+          <aside class="notes">
+            <p>Memoize method creates a function that memoizes the result of func.</p>
+
+            <p>For example you don't want to have to perform that same operation over and over for the same arguments.
+              Memoize effectively lets you cache the results of a function.</p>
+          </aside>
         </section>
       </section>
 
       <section>
         <section>
           <h2><span class="highlighting">Other</span> methods</h2>
+
+          <aside class="notes">
+            <p>Finally, I will show you other methods from different areas</p>
+          </aside>
         </section>
 
         <section>
@@ -230,6 +332,12 @@
               // a floating-point number between 1.2 and 5.2
             </code>
           </pre>
+
+          <aside class="notes">
+            <p>Produces a random number between the inclusive lower and upper bounds. If only one argument is provided a
+              number between 0 and the given number is returned. If floating is true, or either lower or upper are
+              floats, a floating-point number is returned instead of an integer.</p>
+          </aside>
         </section>
 
         <section>
@@ -247,11 +355,18 @@
               // array with random values between 0 and 5
             </code>
           </pre>
+
+          <aside class="notes">
+            <p>A quite useful method. Invokes the iteratee n times, returning an array of the results of each
+              invocation. </p>
+
+            <p>For example, we can create an array with random values.</p>
+          </aside>
         </section>
 
         <section>
           <h3><span class="highlighting">_</span>.unionBy</h3>
-              <pre>
+          <pre>
                 <code class="hljs javascript has-highlights" data-trim data-noescape>
                   _.unionBy([arrays], [iteratee=_.identity])
                 </code>
@@ -266,6 +381,13 @@
               // => [{ 'x': 1 }, { 'x': 2 }]
             </code>
           </pre>
+
+          <aside class="notes">
+            <p>Creates an array of unique values, in order, from all given arrays.</p>
+
+            <p>It accepts iterate which is invoked for each element of each array to generate the criterion by which
+              uniqueness is computed. </p>
+          </aside>
         </section>
       </section>
 
@@ -279,11 +401,20 @@
             times(5, () => random(0, 5));
           </code>
         </pre>
+
+        <aside class="notes">
+          <p>The Lodash library has many different methods for solving various problems. You probably won't use all the
+            methods. You can import only the methods you need so as not to overload the project.</p>
+        </aside>
       </section>
 
       <section>
         <h2>Documentation</h2>
         <a href="https://lodash.com" target="_blank">https://lodash.com</a>
+
+        <aside class="notes">
+          <p>For complete information, you can go to the official website with documentation</p>
+        </aside>
       </section>
     </div>
   </div>

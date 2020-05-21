@@ -3,9 +3,6 @@
 ## Introduction
 
 Hey! I'm Evgeniy. I want to tell about the lodash. This is a modern JavaScript utility library delivering modularity, performance & extras.
-
-## Slide 1 (History)
-
 The original author of the library is John-David Dalton. The initial release took place in 2012. 
 Lodash takes most of its ideas from Underscore.js and now receives maintenance from the original contributors to Underscore.js.
 
