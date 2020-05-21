@@ -66,7 +66,7 @@ Let's consider some of them.
 
 Before that I already said that Lodash and the ES6 methods are very similar. Let's consider in more detail.
 
-## Slide 8.1 (_.forEach (ES6))
+## Slide 7.1 (_.forEach (ES6))
 
 For an example of the similarities and differences of native JS and Lodash methods we consider _.each method.
 
@@ -93,7 +93,7 @@ obj.forEach((item) => console.log(item));
 
 As a result, we expect TypeError.
 
-## Slide 8.2 (_.forEach (Lodash))
+## Slide 7.2 (_.forEach (Lodash))
 
 _.forEach method of Lodash allows iterate values of objects:
 ```
@@ -113,7 +113,7 @@ _.forEach(obj, (item, key) => console.log(`${key}: ${item}`));
 ```
 This method returns collection.
 
-## Slide 9 (_.groupBy)
+## Slide 7.3 (_.groupBy)
 
 GroupBy method creates an object composed of keys generated from the results of running each element of collection through iterate. For example, we have an array of person. 
 ```
@@ -138,11 +138,11 @@ const groups = _.groupBy(persons, (person) => person.isActive);
 ```
 In our example, we grouped into active and inactive persons.
 
-## Slide 10 ("Function" Methods)
+## Slide 8 ("Function" Methods)
 
 Next, we look at two useful functional methods that may be useful.
 
-## Slide 11 (_.debounce)
+## Slide 8.1 (_.debounce)
 
 Debounce method creates a debounced function that delays invoking function until after wait milliseconds have elapsed since the last time the debounced function was invoked. Example:
 ```
@@ -152,7 +152,7 @@ input.addEventListener('input', _.debounce(() => isValidEmail(input.value), 2000
 ```
 We can check the validity of the email during the input process so that we can report an error as early as possible. In this example, we check the email after 2 seconds of stopping text input.
 
-## Slide 12 (_.memoize)
+## Slide 8.2 (_.memoize)
 
 Memoize method creates a function that memoizes the result of func. 
 ```
@@ -168,11 +168,11 @@ adder(20, 5); // returns cached result (25)
 ```
 For example you don't want to have to perform that same operation over and over for the same arguments. Memoize effectively lets you cache the results of a function.
 
-## Slide 13 (Other methods)
+## Slide 9 (Other methods)
 
 Finally, I will show you other methods from different areas
 
-## Slide 14 (_.random)
+## Slide 9.1 (_.random)
 
 Produces a random number between the inclusive lower and upper bounds. If only one argument is provided a number between 0 and the given number is returned. If floating is true, or either lower or upper are floats, a floating-point number is returned instead of an integer.
 
@@ -190,7 +190,7 @@ _.random(1.2, 5.2);
 // a floating-point number between 1.2 and 5.2
 ```
 
-## Slide 15 (_.times)
+## Slide 9.2 (_.times)
 
 A quite useful method. Invokes the iteratee n times, returning an array of the results of each invocation. 
 ```
@@ -198,7 +198,7 @@ _.times(5, () => _.random(0, 5)); // array with random values between 0 and 5
 ```
 For example, we can create an array with random values.
 
-## Slide 16 (_.unionBy)
+## Slide 9.3 (_.unionBy)
 
 Creates an array of unique values, in order, from all given arrays.
 ```
@@ -211,7 +211,7 @@ _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
 ```
 It accepts iterate which is invoked for each element of each array to generate the criterion by which uniqueness is computed. 
 
-## Slide 17 (Modules)
+## Slide 10 (Modules)
 
 The Lodash library has many different methods for solving various problems. You probably won't use all the methods. You can import only the methods you need so as not to overload the project.
 
@@ -220,6 +220,6 @@ import times from 'lodash/times';
 import random from 'lodash/random';
 ```
 
-## Slide 18 (Official documentation)
+## Slide 11 (Official documentation)
 
 For complete information, you can go to the official website with documentation: https://lodash.com
