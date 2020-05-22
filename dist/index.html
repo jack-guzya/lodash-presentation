@@ -1,0 +1,132 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Lodash presentation</title><link rel="icon" href="assets/favicon.ico" type="image/ico"/><link href="main.3e675b2facaec6b5dfc0.css" rel="stylesheet"></head><body class="body"><div class="reveal"><div class="slides"><section data-background-color="#000000"><h1 class="title"><span class="highlighting">_</span>.Lodash</h1><p class="title">modularity, performance & extras</p><aside class="notes"><p>Hey! I'm Evgeniy. I want to tell about the lodash. This is a modern JavaScript utility library delivering modularity, performance & extras.</p><p>The original author of the library is John-David Dalton. The initial release took place in 2012. Lodash takes most of its ideas from Underscore.js and now receives maintenance from the original contributors to Underscore.js.</p></aside></section><section><h2>Installation</h2><p>In a browser</p><pre>
+          <code data-trim><script src="lodash.js"></script></code>
+        </pre><p>Using npm</p><pre>
+          <code data-trim data-noescape="">$ npm install lodash</code>
+        </pre><p>Require</p><pre>
+          <code data-trim data-noescape="">var _ = require('lodash');</code>
+        </pre><aside class="notes"><p>Lodash is easy to install. You can install in the browser or using npm</p></aside></section><section><h2>Why Lodash?</h2><ul><li class="fragment">Iterating arrays, objects, & strings</li><li class="fragment">Manipulating & testing values</li><li class="fragment">Creating composite functions</li></ul><aside class="notes"><p>Lodash makes JavaScript easier. Lodash’s modular methods are great for:</p></aside></section><section><h2><span class="highlighting">Lodash</span> &rarr; <span class="highlighting">es5/es6</span> array methods</h2><ul><li>each &rarr; forEach</li><li>map &rarr; map</li><li>reduce &rarr; reduce</li><li>find &rarr; find</li><li>filter &rarr; filter</li><li>contains &rarr; includes</li><li>etc</li></ul><aside class="notes"><p>Lodash was especially relevant before the release of the ES6 standard.</p><p>You can see the similarity of methods on this slide</p></aside></section><section><h2>Lodash today</h2><img src="assets/relevant-meme.jpg" alt="relevant-meme"><aside class="notes"><p>You ask: why should we use Lodash? After all, there are almost all native JavaScript methods that we can use without Lodash. You will get an answer when I talk about the possibilities of this library.</p></aside></section><section><h2>Possibilities</h2><ul><li class="fragment">Utilities</li><li class="fragment">functions</li><li class="fragment">String</li><li class="fragment">Array</li><li class="fragment">Collection</li><li class="fragment">Object</li><li class="fragment">Seq</li></ul><aside class="notes"><p>So, we pass directly to Lodash itself. It can be broken down into several main areas:</p><ul><li>Utilities - for simplifying common programming tasks such as determining type as well as simplifying math operations;</li><li>Function - simplifying binding, decorating, constraining, throttling, currying, and changing the pointer;</li><li>String - conversion functions for performing basic string operations, such as trimming, converting to uppercase, camel case, etc;</li><li>Array - creating, splitting, combining, modifying, and compressing;</li><li>Collection - iterating, sorting, filtering, splitting, and building;</li><li>Object - accessing, extending, merging, defaults, and transforming;</li><li>Seq - chaining, wrapping, filtering, and testing.</li></ul><p>Let's consider some of them.</p></aside></section><section><section><h2><span class="highlighting">"Collection"</span> Methods</h2><aside class="notes"><p>Before that I already said that Lodash and the ES6 methods are very similar. Let's consider in more detail.</p></aside></section><section><h3><span class="highlighting">_</span>.forEach</h3><h4><span class="highlighting">ES6</span></h4><pre>
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+              const arr = [1, 2, 3];
+
+              arr.forEach((item) => console.log(item));
+              // expected: 1, 2, 3
+          </code>
+        </pre><pre class="fragment">
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+              const obj = {
+                name: 'Jack',
+                age: 26,
+              };
+
+              obj.forEach((item) => console.log(item));
+              // expected: TypeError: obj.forEach is not a function
+          </code>
+        </pre><aside class="notes"><p>For an example of the similarities and differences of native JS and Lodash methods we consider _.each method.</p><p>forEach method of native JS iterates over elements of an array and invokes iterate for each element.</p><p>--next--</p><p>We can iterate over the elements of the array, but not keys of an object, which is obvious:</p><p>As a result, we expect TypeError.</p></aside></section><section><h3><span class="highlighting">_</span>.forEach</h3><h4><span class="highlighting">Lodash</span></h4><pre>
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            const obj = {
+              name: 'Jack',
+              age: 26,
+            };
+
+            _.forEach(obj, (item) => console.log(item));
+            // expected: 'Jack', 26
+          </code>
+        </pre><pre class="fragment">
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            _.forEach(obj, (item, key) => console.log(`${key}: ${item}`));
+            /* expected:  name: 'Jack'
+                          age: 26 */
+          </code>
+        </pre><aside class="notes"><p>_.forEach method of Lodash allows iterate values of objects:</p><p>--next--</p><p>We also can iterate keys:</p><p>This method returns collection.</p></aside></section><section><h3><span class="highlighting">_</span>.groupBy</h3><pre>
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            const persons = [
+              { name: 'Jack', isActive: false },
+              { name: 'Julia', isActive: true },
+              { name: 'John', isActive: true }
+            ];
+
+            const groups = _.groupBy(persons, (person) => person.isActive);
+          </code>
+        </pre><pre class="fragment">
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            // groups:
+            {
+              false: [ { name: 'Jack', isActive: false } ],
+              true: [
+                { name: 'Julia', isActive: true },
+                { name: 'John', isActive: true }
+              ]
+            }
+          </code>
+        </pre><aside class="notes"><p>GroupBy method creates an object composed of keys generated from the results of running each element of collection through iterate. For example, we have an array of person.</p><p>--next---</p><p>This method allows you to group items by an iterator.</p><p>In our example, we grouped into active and inactive persons.</p></aside></section></section><section><section><h2><span class="highlighting">"functions"</span> Methods</h2><aside class="notes"><p>Next, we look at two useful functional methods that may be useful.</p></aside></section><section><h3><span class="highlighting">_</span>.debounce</h3><pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.debounce(func, [wait=0])
+            </code>
+          </pre><pre><code class="hljs javascript has-highlights">[wait=0]: // The number of milliseconds to delay</code></pre><pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              const isValidEmail = (email) => (/* some RegExp */).test(email);
+
+              input.addEventListener('input',
+                  _.debounce(() => isValidEmail(input.value), 2000));
+            </code>
+          </pre><aside class="notes"><p>Debounce method creates a debounced function that delays invoking function until after wait milliseconds have elapsed since the last time the debounced function was invoked.</p><p>We can check the validity of the email during the input process so that we can report an error as early as possible. In this example, we check the email after 2 seconds of stopping text input.</p></aside></section><section><h3><span class="highlighting">_</span>.memoize</h3><pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              const add = (a, b) => a + b; // or some difficult function
+
+              const adder = _.memoize(add);
+
+              adder(20, 5); // 25
+              adder(10, 10); // 20
+              adder(20, 5); // returns cached result (25)
+              adder(10, 10); // returns cached result (20)
+              adder(20, 5); // returns cached result (25)
+            </code>
+          </pre><aside class="notes"><p>Memoize method creates a function that memoizes the result of func.</p><p>For example you don't want to have to perform that same operation over and over for the same arguments. Memoize effectively lets you cache the results of a function.</p></aside></section></section><section><section><h2><span class="highlighting">Other</span> methods</h2><aside class="notes"><p>Finally, I will show you other methods from different areas</p></aside></section><section><h3><span class="highlighting">_</span>.random</h3><pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.random([lower=0], [upper=1], [floating])
+            </code>
+          </pre><pre><code class="hljs javascript has-highlights">[floating] (boolean): // Specify returning a floating-point number.</code></pre><pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.random(0, 5);
+              // an integer between 0 and 5
+
+              _.random(5);
+              // also an integer between 0 and 5
+
+              _.random(5, true);
+              // a floating-point number between 0 and 5
+
+              _.random(1.2, 5.2);
+              // a floating-point number between 1.2 and 5.2
+            </code>
+          </pre><aside class="notes"><p>Produces a random number between the inclusive lower and upper bounds. If only one argument is provided a number between 0 and the given number is returned. If floating is true, or either lower or upper are floats, a floating-point number is returned instead of an integer.</p></aside></section><section><h3><span class="highlighting">_</span>.times</h3><pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.times(n, [iteratee=_.identity])
+            </code>
+          </pre><pre><code class="hljs javascript has-highlights">n (number): // The number of times to invoke iteratee.</code></pre><pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.times(5, () => _.random(0, 5));
+              // expected: [0, 3, 1, 4, 5]
+              // array with random values between 0 and 5
+            </code>
+          </pre><aside class="notes"><p>A quite useful method. Invokes the iteratee n times, returning an array of the results of each invocation.</p><p>For example, we can create an array with random values.</p></aside></section><section><h3><span class="highlighting">_</span>.unionBy</h3><pre>
+                <code class="hljs javascript has-highlights" data-trim data-noescape>
+                  _.unionBy([arrays], [iteratee=_.identity])
+                </code>
+              </pre><pre>
+            <code class="hljs javascript has-highlights" data-trim data-noescape>
+              _.unionBy([2.1], [1.2, 2.3], Math.floor);
+              // => [2.1, 1.2]
+
+              // The `_.property` iteratee shorthand.
+              _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+              // => [{ 'x': 1 }, { 'x': 2 }]
+            </code>
+          </pre><aside class="notes"><p>Creates an array of unique values, in order, from all given arrays.</p><p>It accepts iterate which is invoked for each element of each array to generate the criterion by which uniqueness is computed.</p></aside></section></section><section><h2>Modules</h2><pre>
+          <code class="hljs javascript has-highlights" data-trim data-noescape>
+            import times from 'lodash/times';
+            import random from 'lodash/random';
+
+            times(5, () => random(0, 5));
+          </code>
+        </pre><aside class="notes"><p>The Lodash library has many different methods for solving various problems. You probably won't use all the methods. You can import only the methods you need so as not to overload the project.</p></aside></section><section><h2>Documentation</h2><a href="https://lodash.com" target="_blank">https://lodash.com</a><aside class="notes"><p>For complete information, you can go to the official website with documentation</p></aside></section></div></div><script src="main.59bece04304301351e45.js"></script></body></html>
