@@ -53,12 +53,11 @@ You ask: why should we use Lodash? After all, there are almost all native JavaSc
 So, we pass directly to Lodash itself. It can be broken down into several main areas:
 
 * Utilities - for simplifying common programming tasks such as determining type as well as simplifying math operations;
-* Function - simplifying binding, decorating, constraining, throttling, currying, and changing the pointer;
+* Function - simplifying binding, decorating, constraining, throttling, currying;
 * String - conversion functions for performing basic string operations, such as trimming, converting to uppercase, camel case, etc;
 * Array - creating, splitting, combining, modifying, and compressing;
 * Collection - iterating, sorting, filtering, splitting, and building;
 * Object - accessing, extending, merging, defaults, and transforming;
-* Seq - chaining, wrapping, filtering, and testing.
 
 Let's consider some of them.
 
@@ -140,11 +139,11 @@ In our example, we grouped into active and inactive persons.
 
 ## Slide 8 ("Function" Methods)
 
-Next, we look at two useful functional methods that may be useful.
+Next, we look at two functional methods that may be useful.
 
 ## Slide 8.1 (_.debounce)
 
-Debounce method creates a debounced function that delays invoking function until after wait milliseconds have elapsed since the last time the debounced function was invoked. Example:
+Debounce method creates a debounced function that delays invoking function until after wait milliseconds have elapsed since the last time the debounced function was invoked.
 ```
 const isValidEmail = (email) => (/* some RegExp */).test(email);
 
@@ -154,7 +153,7 @@ We can check the validity of the email during the input process so that we can r
 
 ## Slide 8.2 (_.memoize)
 
-Memoize method creates a function that memoizes the result of func. 
+Memoize method creates a function that memoizes the result of completed some function. 
 ```
 const add = (a, b) => a + b; // or some difficult function
 	
